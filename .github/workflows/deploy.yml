@@ -31,16 +31,13 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Build to docs directory
-        run: |
-          npm run build
-          rm -rf docs
-          cp -r dist docs
+      - name: Build
+        run: npm run build
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: .
+          path: ./dist
 
   deploy:
     environment:
